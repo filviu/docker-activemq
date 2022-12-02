@@ -92,6 +92,6 @@ jobs:
           tags: filviu/activemq:${{ matrix.mq_version }}
           context: ./${{ matrix.mq_version }}
           platforms: linux/amd64
-          push: true
+          push: ${{ github.event.base_ref =='refs/heads/master' || github.event.base_ref =='refs/heads/main' }}
           cache-from: type=gha,scope=${{ matrix.mq_version }}
           cache-to: type=gha,mode=max,scope=${{ matrix.mq_version }}
