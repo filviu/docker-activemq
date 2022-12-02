@@ -1,11 +1,7 @@
-**Unmaintained**: This is no longer under active development. I really loved seeing that the images were found so useful by so many people. Sadly I did not have the time for quite a while to follow up on the requests or help establishing a healthy community around it. Also my past attempt to transfer this repo to the activemq org failed. Therefore I am going to archive this and I hope that you will find another place for great activemq containers.
+# docker-activemq
 
-
-docker-activemq
-===============
-
-[![Build Status](https://travis-ci.org/rmohr/docker-activemq.svg?branch=master)](https://travis-ci.org/rmohr/docker-activemq)
-[![Docker Pulls](https://img.shields.io/docker/pulls/rmohr/activemq.svg?maxAge=2592000)](https://hub.docker.com/r/rmohr/activemq/)
+[![Build and Push Docker Images](https://github.com/filviu/docker-activemq/actions/workflows/docker-build.yml/badge.svg)](https://github.com/filviu/docker-activemq/actions/workflows/docker-build.yml)
+[![Docker Pulls](https://img.shields.io/docker/pulls/filviu/activemq.svg?maxAge=2592000)](https://hub.docker.com/r/rmohr/activemq/)
 
 [Docker](https://www.docker.io/) file for trusted builds of [ActiveMQ](http://activemq.apache.org/) on https://registry.hub.docker.com/u/rmohr/activemq/.
 
@@ -16,10 +12,8 @@ Run the latest container with:
 
 The JMX broker listens on port 61616 and the Web Console on port 8161.
 
-Image Tags
-----------
+## Image Tags
 
-    rmohr/activemq:latest (rmohr/activemq:5.15.9)
     rmohr/activemq:5.10.0
     rmohr/activemq:5.10.1
     rmohr/activemq:5.10.2
@@ -58,8 +52,9 @@ Image Tags
     rmohr/activemq:5.15.9
     rmohr/activemq:5.15.9-alpine
 
-Port Map
---------
+No `latest` tag ? No, you shouldn't be using it anyway.
+
+## Port Map
 
     61616 JMS
     8161  UI
@@ -68,8 +63,8 @@ Port Map
     1883  MQTT  (since `rmohr/activemq:5.12.1`)
     61614 WS    (since `rmohr/activemq:5.12.1`)
 
-Customizing configuration and persistence location
---------------------------------------------------
+## Customizing configuration and persistence location
+
 By default data and configuration is stored inside the container and will be
 lost after the container has been shut down and removed. To persist these
 files you can mount these directories to directories on your host system:
@@ -102,3 +97,6 @@ host directory:
 The last command will stop and remove the intermediate container. Your
 directories are now initialized and you can run ActiveMQ as described above.
 
+## Fork
+
+Based on a lot of good work done by Roman Mohr, [here](https://github.com/rmohr/docker-activemq).
