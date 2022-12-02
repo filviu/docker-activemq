@@ -1,0 +1,97 @@
+---
+
+name: Build and Push Docker Images
+
+on:
+  # Allows you to run workflow manually from Actions tab
+  workflow_dispatch:
+  push:
+    branches: [main,master]
+
+jobs:
+  build:
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        mq_version:
+          - 5.12.1
+          - 5.12.2
+          - 5.13.0
+          - 5.13.1
+          - 5.13.2
+          - 5.13.3
+          - 5.13.4
+          - 5.14.0
+          - 5.14.0-alpine
+          - 5.14.1
+          - 5.14.1-alpine
+          - 5.14.2
+          - 5.14.2-alpine
+          - 5.14.3
+          - 5.14.3-alpine
+          - 5.14.4
+          - 5.14.4-alpine
+          - 5.14.5
+          - 5.14.5-alpine
+          - 5.15.2
+          - 5.15.2-alpine
+          - 5.15.3
+          - 5.15.3-alpine
+          - 5.15.4
+          - 5.15.4-alpine
+          - 5.15.5
+          - 5.15.5-alpine
+          - 5.15.6
+          - 5.15.6-alpine
+          - 5.15.9
+          - 5.15.9-alpine
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Cache Docker layers
+        uses: actions/cache@v3
+        with:
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-buildx-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-
+
+      - name: Login to Dockerhub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+
+      - name: Build image
+        uses: docker/build-push-action@v3
+        with:
+          tags: filviu/activemq:${{ matrix.mq_version }}
+          context: ./${{ matrix.mq_version }}
+          platforms: linux/amd64
+          push: false
+          load: true 
+          cache-from: type=gha,scope=${{ matrix.mq_version }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.mq_version }}
+
+      - name: Test the image
+        shell: bash
+        run: |
+          docker run -d -p 8161:8161 --expose 8161 --name activemq-test-${{ matrix.mq_version }} filviu/activemq:${{ matrix.mq_version }}
+          wget --retry-connrefused --waitretry=5 --read-timeout=20 --timeout=15 -t 10 -O /dev/null http://admin:admin@127.0.0.1:8161/admin/
+          docker stop activemq-test-${{ matrix.mq_version }}
+          docker rm activemq-test-${{ matrix.mq_version }}
+
+      - name: Build & push image
+        uses: docker/build-push-action@v3
+        with:
+          tags: filviu/activemq:${{ matrix.mq_version }}
+          context: ./${{ matrix.mq_version }}
+          platforms: linux/amd64
+          push: true
+          cache-from: type=gha,scope=${{ matrix.mq_version }}
+          cache-to: type=gha,mode=max,scope=${{ matrix.mq_version }}
