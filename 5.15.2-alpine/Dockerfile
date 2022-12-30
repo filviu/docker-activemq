@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-alpine
+FROM amd64/eclipse-temurin:8-jre-alpine
 
 ENV ACTIVEMQ_VERSION 5.15.2
 ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION
