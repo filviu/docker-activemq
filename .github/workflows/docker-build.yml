@@ -46,6 +46,8 @@ jobs:
           - 5.15.6-alpine
           - 5.15.9
           - 5.15.9-alpine
+          - 5.16.5
+          - 5.16.5-alpine
     steps:
       - name: Check out
         uses: actions/checkout@v3
