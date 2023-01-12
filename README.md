@@ -51,6 +51,8 @@ The JMX broker listens on port 61616 and the Web Console on port 8161.
     filviu/activemq:5.15.6-alpine
     filviu/activemq:5.15.9
     filviu/activemq:5.15.9-alpine
+    filviu/activemq:5.16.5
+    filviu/activemq:5.16.5-alpine
 
 No `latest` tag ? No, you shouldn't be using it anyway.
 
@@ -99,4 +101,4 @@ directories are now initialized and you can run ActiveMQ as described above.
 
 ## Fork
 
-Based on a lot of good work done by Roman Mohr, [here](https://github.com/filviu/docker-activemq).
+Based on a lot of good work done by Roman Mohr, [here](https://github.com/filviu/docker-activemq). Forked once the upstream repository was archived.
