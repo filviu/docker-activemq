@@ -51,6 +51,12 @@ The JMX broker listens on port 61616 and the Web Console on port 8161.
     filviu/activemq:5.15.6-alpine
     filviu/activemq:5.15.9
     filviu/activemq:5.15.9-alpine
+    filviu/activemq:5.15.13
+    filviu/activemq:5.15.13-alpine
+    filviu/activemq:5.15.14
+    filviu/activemq:5.15.14-alpine
+    filviu/activemq:5.15.15
+    filviu/activemq:5.15.15-alpine
     filviu/activemq:5.16.5
     filviu/activemq:5.16.5-alpine
 
