@@ -61,6 +61,10 @@ The JMX broker listens on port 61616 and the Web Console on port 8161.
     filviu/activemq:5.16.5-alpine
     filviu/activemq:5.17.3
     filviu/activemq:5.17.3-alpine
+    filviu/activemq:5.17.6-alpine
+    filviu/activemq:5.17.6
+    filviu/activemq:5.18.3-alpine
+    filviu/activemq:5.18.3
 
 No `latest` tag ? No, you shouldn't be using it anyway.
 
