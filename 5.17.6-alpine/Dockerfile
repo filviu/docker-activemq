@@ -1,4 +1,4 @@
-FROM amd64/eclipse-temurin:8-jre-alpine
+FROM amd64/eclipse-temurin:11-jre-alpine
 
 ENV ACTIVEMQ_VERSION 5.17.6
 ENV ACTIVEMQ apache-activemq-$ACTIVEMQ_VERSION
