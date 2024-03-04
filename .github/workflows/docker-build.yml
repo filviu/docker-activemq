@@ -52,10 +52,18 @@ jobs:
           - 5.15.14-alpine
           - 5.15.15
           - 5.15.15-alpine
+          - 5.15.16
+          - 5.15.16-alpine
           - 5.16.5
           - 5.16.5-alpine
+          - 5.16.7
+          - 5.16.7-alpine
           - 5.17.3
           - 5.17.3-alpine
+          - 5.17.6
+          - 5.17.6-alpine
+          - 5.18.3
+          - 5.18.3-alpine
     steps:
       - name: Check out
         uses: actions/checkout@v3
