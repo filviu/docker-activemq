@@ -113,4 +113,4 @@ directories are now initialized and you can run ActiveMQ as described above.
 
 ## Fork
 
-Based on a lot of good work done by Roman Mohr, [here](https://github.com/filviu/docker-activemq). Forked once the upstream repository was archived.
+Based on a lot of good work done by Roman Mohr, [here](https://github.com/rmohr/docker-activemq). Fork reason: the upstream repository was archived, development stopped. They explain [here](https://github.com/rmohr/docker-activemq/issues/71) and [here](https://github.com/rmohr/docker-activemq/issues/70).
